@@ -3,4 +3,8 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorGray">#586069</color>
+    <color name="colorEdiTextHint">#939598</color>
+    <color name="colorEdiText">#4b4f54</color>
+
 </resources>

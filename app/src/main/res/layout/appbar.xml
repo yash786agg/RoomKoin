@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/actionBarSize"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary"
+    android:orientation="horizontal">
+
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="@dimen/dimen_50dp"
+        android:layout_height="@dimen/dimen_50dp"
+        android:layout_gravity="center"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/ic_vector_back"
+        android:contentDescription="@string/app_name"/>
+
+    <TextView
+        style="@style/WrapWidthHeight"
+        android:text="@string/title__add_bird"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:textSize="@dimen/text_size_19sp" />
+
+</LinearLayout>
