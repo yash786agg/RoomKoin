@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View" />
+        <import type="android.text.TextUtils"/>
+
+        <variable
+            name="entity"
+            type="com.app.model.birds.BirdsEntity"/>
+    </data>
+
+    <LinearLayout
+        style="@style/MatchWidthVertical">
+
+        <LinearLayout
+            style="@style/MatchWidthVertical">
+
+            <androidx.cardview.widget.CardView
+                style="@style/MatchWidth"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_margin="@dimen/dimen_10dp"
+                app:cardElevation="@dimen/dimen_8dp"
+                app:cardCornerRadius="@dimen/dimen_8dp">
+
+                <LinearLayout
+                    style="@style/MatchWidthHorizontal"
+                    android:layout_margin="@dimen/dimen_10dp">
+
+                    <ImageView
+                        style="@style/birdsAdapterImageView"
+                        android:background="@drawable/place_holder"
+                        android:contentDescription="@string/app_name" />
+
+                    <LinearLayout
+                        style="@style/MatchWidthVertical"
+                        android:layout_margin="@dimen/dimen_5dp">
+
+                        <TextView
+                            style="@style/WrapWidthHeight"
+                            android:textSize="@dimen/text_size_14sp"
+                            android:visibility="@{TextUtils.isEmpty(entity.birdName) ? View.GONE : View.VISIBLE}"
+                            android:text="@{@string/name+` : ` + entity.birdName}"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:textColor="@android:color/black"/>
+
+                        <TextView
+                            style="@style/WrapWidthHeight"
+                            android:layout_marginTop="@dimen/dimen_5dp"
+                            android:textSize="@dimen/text_size_14sp"
+                            android:visibility="@{TextUtils.isEmpty(entity.notes) ? View.GONE : View.VISIBLE}"
+                            android:text="@{@string/note+` : ` + entity.notes}"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:textColor="@android:color/black"/>
+
+                        <TextView
+                            style="@style/WrapWidthHeight"
+                            android:layout_marginTop="@dimen/dimen_5dp"
+                            android:textSize="@dimen/text_size_14sp"
+                            android:visibility="@{TextUtils.isEmpty(entity.birdRarity) ? View.GONE : View.VISIBLE}"
+                            android:text="@{@string/rarity+` : ` + entity.birdRarity}"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:textColor="@android:color/black"/>
+
+                        <TextView
+                            style="@style/WrapWidthHeight"
+                            android:layout_marginTop="@dimen/dimen_5dp"
+                            android:textSize="@dimen/text_size_14sp"
+                            android:visibility="@{entity.latitude == 0.0 ? View.GONE : View.VISIBLE}"
+                            android:text="@{@string/latitude+` : ` + entity.latitude}"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:textColor="@android:color/black"/>
+
+                        <TextView
+                            style="@style/WrapWidthHeight"
+                            android:layout_marginTop="@dimen/dimen_5dp"
+                            android:textSize="@dimen/text_size_14sp"
+                            android:visibility="@{entity.longitude == 0.0 ? View.GONE : View.VISIBLE}"
+                            android:text="@{@string/longitude+` : ` + entity.longitude}"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:textColor="@android:color/black"/>
+
+                        <TextView
+                            style="@style/WrapWidthHeight"
+                            android:layout_marginTop="@dimen/dimen_5dp"
+                            android:textSize="@dimen/text_size_14sp"
+                            app:timeStamp="@{entity.timeStamp}"
+                            android:textStyle="bold"
+                            android:textColor="@android:color/black"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

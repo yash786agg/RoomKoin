@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rootView_add_birds"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
     <include
+        android:id="@+id/layout_appbar"
         layout="@layout/appbar"/>
 
     <ScrollView
-        style="@style/ScrollBar">
+        style="@style/ScrollBar"
+        android:layout_below="@+id/layout_appbar">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -117,4 +119,12 @@
 
     </ScrollView>
 
-</LinearLayout>
+    <ProgressBar
+        android:id="@+id/pb_add_birds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        style="@style/Widget.AppCompat.ProgressBar" />
+
+</RelativeLayout>

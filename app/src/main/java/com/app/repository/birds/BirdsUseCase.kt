@@ -1,11 +1,10 @@
 package com.app.repository.birds
 
-import android.util.Log
+import com.app.model.birds.BirdsEntity
 
 class BirdsUseCase(private val birdsRepository : BirdsRepository) {
 
-    fun birdsUseCase() {
-        Log.e("BirdsListActivity","BirdsListViewModel birdsRepository: $birdsRepository")
-        birdsRepository.birdsDAO()
-    }
+    suspend fun executeInsertQuery(birdsEntity : BirdsEntity) = birdsRepository.insertDataAsync(birdsEntity)
+
+    suspend fun executeGetListQuery() : List<BirdsEntity> = birdsRepository.getListAsync()
 }

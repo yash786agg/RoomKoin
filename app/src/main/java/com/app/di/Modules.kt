@@ -1,12 +1,15 @@
 package com.app.di
 
+import android.app.Application
 import androidx.room.Room
-import com.app.database.BirdsDatabase
+import com.app.dataBase.BirdsDatabase
 import com.app.helper.UiHelper
+import com.app.location.LocationViewModel
 import com.app.repository.birds.BirdsRepository
 import com.app.repository.birds.BirdsUseCase
-import com.app.ui.birds.list.BirdsListViewModel
+import com.app.ui.birds.viewmodel.BirdsViewModel
 import com.app.utils.Constants.Companion.BIRDS_DATABASE_NAME
+import com.google.android.gms.location.LocationServices
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.dsl.module
@@ -21,12 +24,14 @@ private val loadFeature by lazy {
                    repositoryModule,
                    useCaseModule,
                    birdsAppModule,
+                   fUsedLocationModule,
                    uiHelperModule)
     )
 }
 
 val viewModelModule = module {
-    viewModel { BirdsListViewModel(birdsUseCase = get()) }
+    viewModel { BirdsViewModel(birdsUseCase = get()) }
+    viewModel { LocationViewModel(locationProviderClient = get(),uiHelper = get()) }
 }
 
 val repositoryModule = module {
@@ -41,6 +46,10 @@ val uiHelperModule = module {
     single { UiHelper(androidContext()) }
 }
 
+val fUsedLocationModule = module {
+    single { locationProviderClient(androidApplication()) }
+}
+
 val birdsAppModule = module {
 
     // Room Database
@@ -49,4 +58,8 @@ val birdsAppModule = module {
     // BirdsDAO
     single { get<BirdsDatabase>().birdsDAO() }
 }
+
+private fun locationProviderClient(androidApplication : Application)
+        = LocationServices.getFusedLocationProviderClient(androidApplication)
+
 

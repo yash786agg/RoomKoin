@@ -77,6 +77,10 @@ dependencies {
     // Co-routines support for Room
     implementation "androidx.room:room-ktx:$room_version"
 
+    // Google Location Android dependencies
+    def google_location_version = "17.0.0"
+    implementation "com.google.android.gms:play-services-location:$google_location_version"
+
     // Android lifecycle dependency Injection
     def lifecycle_version = '2.1.0'
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
