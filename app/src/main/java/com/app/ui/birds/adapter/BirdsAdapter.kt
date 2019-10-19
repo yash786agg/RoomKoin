@@ -12,27 +12,28 @@ import kotlin.properties.Delegates
 
 class BirdsAdapter : RecyclerView.Adapter<BirdsAdapter.MyViewHolder>(), DiffUtilCallback {
 
-    var items : List<BirdsEntity> by Delegates.observable(emptyList()) { _, oldItem, newItem ->
+    var items: List<BirdsEntity> by Delegates.observable(emptyList()) { _, oldItem, newItem ->
         autoNotify(oldItem, newItem) { old, new -> old.timeStamp == new.timeStamp }
     }
 
-    override fun onCreateViewHolder(parent : ViewGroup, viewType : Int): MyViewHolder {
-        val binding : AdapterBirdsBinding = DataBindingUtil
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val binding: AdapterBirdsBinding = DataBindingUtil
             .inflate(LayoutInflater.from(parent.context), R.layout.adapter_birds, parent, false)
 
         return MyViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder : MyViewHolder, position : Int) {
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(items[position])
     }
 
     // Gets the number of Items in the list
-    override fun getItemCount() : Int = items.size
+    override fun getItemCount(): Int = items.size
 
-    inner class MyViewHolder(private val binding : AdapterBirdsBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class MyViewHolder(private val binding: AdapterBirdsBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(birdsEntity : BirdsEntity) {
+        fun bind(birdsEntity: BirdsEntity) {
             binding.entity = birdsEntity
         }
     }

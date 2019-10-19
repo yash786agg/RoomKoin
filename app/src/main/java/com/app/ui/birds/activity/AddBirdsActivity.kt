@@ -24,7 +24,7 @@ import com.app.location.LocationViewModel
 import com.app.model.birds.BirdsEntity
 import com.app.roomkoin.R
 import com.app.ui.birds.viewmodel.BirdsViewModel
-import com.app.utils.Constants
+import com.app.utils.Constants.Companion.GPS_REQUEST_LOCATION
 import kotlinx.android.synthetic.main.activty_add_birds.*
 import kotlinx.android.synthetic.main.appbar.*
 import org.koin.android.ext.android.inject
@@ -49,23 +49,23 @@ class AddBirdsActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
         setContentView(R.layout.activty_add_birds)
 
         btn_save.setOnClickListener(this)
-        spinnerRarity.onItemSelectedListener = this
+        spinner_rarity.onItemSelectedListener = this
 
         /* Initialization of Rarity Adapter for Spinner */
         val spAdapter = ArrayAdapter.createFromResource(this, R.array.rarity_bird_array, R.layout.spinner_item)
         spAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         // Apply the adapter to the spinner
-        spinnerRarity.adapter = spAdapter
+        spinner_rarity.adapter = spAdapter
 
-        edTxtName.onQueryTextChange {
-            if(!TextUtils.isEmpty(it)) inputTxtName.error = null
-            else inputTxtName.error = resources.getString(R.string.error_bird_name)
+        edt_name.onQueryTextChange {
+            if(!TextUtils.isEmpty(it)) inputxt_name.error = null
+            else inputxt_name.error = resources.getString(R.string.error_bird_name)
         }
 
-        edTxtNotes.onQueryTextChange {
-            if(!TextUtils.isEmpty(it)) inputTxtNotes.error = null
-            else inputTxtNotes.error = resources.getString(R.string.error_notes)
+        edt_notes.onQueryTextChange {
+            if(!TextUtils.isEmpty(it)) inputxt_notes.error = null
+            else inputxt_notes.error = resources.getString(R.string.error_notes)
         }
 
         btn_cancel.setOnClickListener { finish() }
@@ -89,24 +89,24 @@ class AddBirdsActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
 
     private fun validateInputData() {
 
-        if(!TextUtils.isEmpty(edTxtName.text.toString())) {
-            if(!TextUtils.isEmpty(edTxtNotes.text.toString())) accessGeoLocation()
+        if(!TextUtils.isEmpty(edt_name.text.toString())) {
+            if(!TextUtils.isEmpty(edt_notes.text.toString())) accessGeoLocation()
             else {
-                inputTxtNotes.error = resources.getString(R.string.error_notes)
+                inputxt_notes.error = resources.getString(R.string.error_notes)
                 uiHelper.showSnackBar(rootView_add_birds,resources.getString(R.string.error_notes))
             }
         }
         else {
-            inputTxtName.error = resources.getString(R.string.error_bird_name)
+            inputxt_name.error = resources.getString(R.string.error_bird_name)
             uiHelper.showSnackBar(rootView_add_birds,resources.getString(R.string.error_bird_name))
         }
     }
 
     private fun saveBirdData(latitude : Double, longitude : Double) {
         val timeStamp : Long = uiHelper.getTimeStamp()
-        val birdName : String = edTxtName.text.toString()
-        val notes : String = edTxtNotes.text.toString()
-        val birdRarity : String = spinnerRarity.selectedItem.toString()
+        val birdName : String = edt_name.text.toString()
+        val notes : String = edt_notes.text.toString()
+        val birdRarity : String = spinner_rarity.selectedItem.toString()
 
         Log.e("BirdsListActivity","saveBirdData timeStamp: $timeStamp")
         Log.e("BirdsListActivity","saveBirdData birdName: $birdName")
@@ -207,7 +207,7 @@ class AddBirdsActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
         super.onActivityResult(requestCode, resultCode, data)
 
         when (requestCode) {
-            Constants.GPS_REQUEST_LOCATION ->
+            GPS_REQUEST_LOCATION ->
                 when (resultCode) {
                     RESULT_OK -> subscribeLocationObserver()
 
@@ -226,7 +226,7 @@ class AddBirdsActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
     }
 
     override fun onItemSelected(adapterView : AdapterView<*>?, view: View?, int : Int, long : Long) {
-        spinnerRarity.setSelection(int)
+        spinner_rarity.setSelection(int)
     }
 
     override fun onNothingSelected(adapterView : AdapterView<*>?) {}

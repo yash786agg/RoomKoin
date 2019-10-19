@@ -1,130 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rootView_add_birds"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    style="@style/MatchWidthHeight"
     android:background="@android:color/white">
 
     <include
         android:id="@+id/layout_appbar"
-        layout="@layout/appbar"/>
+        layout="@layout/appbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         style="@style/ScrollBar"
-        android:layout_below="@+id/layout_appbar">
+        android:layout_width="@dimen/dimen_0dp"
+        android:layout_height="@dimen/dimen_0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_appbar">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="@dimen/dimen_50dp"
-            android:layout_margin="@dimen/dimen_20dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/constrainLayout">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputTxtName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_20dp"
-                app:hintTextAppearance="@style/TextInputLabel"
+                android:id="@+id/inputxt_name"
+                style="@style/MatchWidth"
+                android:textColorHint="@color/colorPrimary"
                 app:errorTextAppearance="@style/ErrorTextInputLayout"
-                android:textColorHint="@color/colorPrimary">
+                app:hintTextAppearance="@style/TextInputLabel"
+                app:layout_constraintBottom_toTopOf="@+id/tv_rarity"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="parent">
 
-            <EditText
-                android:id="@+id/edTxtName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="@dimen/dimen_48dp"
-                android:inputType="textEmailAddress"
-                android:textColor="@color/colorEdiText"
-                android:textColorHint="@color/colorEdiTextHint"
-                android:textSize="@dimen/text_size_16sp"
-                android:theme="@style/TextInputLabel"
-                android:backgroundTint="@color/colorPrimary"
-                android:hint="@string/hint_bird_name"/>
+                <EditText
+                    android:id="@+id/edt_name"
+                    style="@style/MatchWidth"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:hint="@string/hint_bird_name"
+                    android:inputType="textEmailAddress"
+                    android:minHeight="@dimen/dimen_48dp"
+                    android:textColor="@color/colorEdiText"
+                    android:textColorHint="@color/colorEdiTextHint"
+                    android:textSize="@dimen/text_size_16sp"
+                    android:theme="@style/TextInputLabel" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
+                android:id="@+id/tv_rarity"
                 style="@style/birdsTextView"
-                android:text="@string/select_rarity" />
+                android:text="@string/select_rarity"
+                app:layout_constraintBottom_toTopOf="@+id/spinner_rarity"
+                app:layout_constraintLeft_toLeftOf="@id/inputxt_name"
+                app:layout_constraintTop_toBottomOf="@+id/inputxt_name" />
 
             <Spinner
-                android:id="@+id/spinnerRarity"
+                android:id="@+id/spinner_rarity"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_48dp"
                 android:layout_marginTop="@dimen/dimen_10dp"
-                android:background="@drawable/gradient_spinner"/>
+                android:background="@drawable/gradient_spinner"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_rarity" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputTxtNotes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/inputxt_notes"
+                style="@style/MatchWidth"
                 android:layout_marginTop="@dimen/dimen_20dp"
-                app:hintTextAppearance="@style/TextInputLabel"
+                android:textColorHint="@color/colorPrimary"
                 app:errorTextAppearance="@style/ErrorTextInputLayout"
-                android:textColorHint="@color/colorPrimary">
+                app:hintTextAppearance="@style/TextInputLabel"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinner_rarity">
 
                 <EditText
-                    android:id="@+id/edTxtNotes"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="@dimen/dimen_48dp"
+                    android:id="@+id/edt_notes"
+                    style="@style/MatchWidth"
+                    android:backgroundTint="@color/colorPrimary"
                     android:gravity="top"
+                    android:hint="@string/hint_notes"
                     android:inputType="textEmailAddress"
+                    android:minHeight="@dimen/dimen_48dp"
                     android:textColor="@color/colorEdiText"
                     android:textColorHint="@color/colorEdiTextHint"
                     android:textSize="@dimen/text_size_16sp"
-                    android:theme="@style/TextInputLabel"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:hint="@string/hint_notes"/>
+                    android:theme="@style/TextInputLabel" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
-                style="@style/MatchWidthHorizontal"
+            <Button
+                android:id="@+id/btn_cancel"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_20dp"
-                android:weightSum="2">
+                android:layout_marginEnd="@dimen/dimen_2dp"
+                android:layout_weight="1"
+                android:background="@drawable/selector_green_btn"
+                android:text="@string/cancel"
+                android:textAllCaps="false"
+                android:textColor="@drawable/text_green_selector"
+                android:textSize="@dimen/text_size_14sp"
+                app:layout_constraintEnd_toStartOf="@+id/btn_save"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/btn_save"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputxt_notes" />
 
-                <Button
-                    android:id="@+id/btn_cancel"
-                    android:layout_width="@dimen/dimen_0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="@dimen/dimen_2dp"
-                    android:textColor="@drawable/text_green_selector"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:text="@string/cancel"
-                    android:textAllCaps="false"
-                    android:textSize="@dimen/text_size_14sp"
-                    android:background="@drawable/selector_green_btn"/>
 
-                <Button
-                    android:id="@+id/btn_save"
-                    android:layout_width="@dimen/dimen_0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="@dimen/dimen_2dp"
-                    android:textColor="@drawable/text_green_selector"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:text="@string/save"
-                    android:textAllCaps="false"
-                    android:textSize="@dimen/text_size_14sp"
-                    android:background="@drawable/selector_green_btn"/>
+            <Button
+                android:id="@+id/btn_save"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_2dp"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:layout_weight="1"
+                android:background="@drawable/selector_green_btn"
+                android:text="@string/save"
+                android:textAllCaps="false"
+                android:textColor="@drawable/text_green_selector"
+                android:textSize="@dimen/text_size_14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btn_cancel"
+                app:layout_constraintTop_toBottomOf="@+id/inputxt_notes"/>
 
-            </LinearLayout>
+            <ProgressBar
+                android:id="@+id/pb_add_birds"
+                style="@style/Widget.AppCompat.ProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
 
-    <ProgressBar
-        android:id="@+id/pb_add_birds"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone"
-        style="@style/Widget.AppCompat.ProgressBar" />
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

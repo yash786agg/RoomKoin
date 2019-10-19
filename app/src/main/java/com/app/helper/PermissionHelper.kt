@@ -16,50 +16,50 @@ import com.app.roomkoin.R
  * [PermissionHelper] class to take care of all the Runtime - Permission required by an app.
  */
 
-class PermissionHelper (private val activity: Activity,private val uiHelper: UiHelper)
-    : ActivityCompat.OnRequestPermissionsResultCallback
-{
+class PermissionHelper(private val activity: Activity, private val uiHelper: UiHelper) :
+    ActivityCompat.OnRequestPermissionsResultCallback {
     interface OnPermissionRequested {
         fun onPermissionResponse(isPermissionGranted: Boolean)
     }
 
-    private var listener : OnPermissionRequested? = null
+    private var listener: OnPermissionRequested? = null
 
-    fun isPermissionGranted(permission : String) : Boolean? {
+    fun isPermissionGranted(permission: String): Boolean? {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             return activity.applicationContext.checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED
         }
         return true
     }
 
-    fun requestPermission(permissions: Array<String>, requestCode: Int, listener: OnPermissionRequested) {
-
+    fun requestPermission(
+        permissions: Array<String>,
+        requestCode: Int,
+        listener: OnPermissionRequested
+    ) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             this.listener = listener
             activity.requestPermissions(permissions, requestCode)
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray)
-    {
-        val isPermissionGranted = grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
-
-        if(!isPermissionGranted)
-        {
-            val should = ActivityCompat.shouldShowRequestPermissionRationale(activity, permissions[0])
-
-            if(should)
-                additionalInfoDialog()
-            else
-                listener?.onPermissionResponse(false)
-        }
-        else
-            listener?.onPermissionResponse(isPermissionGranted)
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        val isPermissionGranted =
+            grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
+        if (!isPermissionGranted) {
+            val should =
+                ActivityCompat.shouldShowRequestPermissionRationale(activity, permissions[0])
+            if (should) additionalInfoDialog()
+            else listener?.onPermissionResponse(false)
+        } else listener?.onPermissionResponse(isPermissionGranted)
     }
 
-    private fun additionalInfoDialog()
-    {
-        val should = ActivityCompat.shouldShowRequestPermissionRationale(activity, ACCESS_FINE_LOCATION)
+    private fun additionalInfoDialog() {
+        val should =
+            ActivityCompat.shouldShowRequestPermissionRationale(activity, ACCESS_FINE_LOCATION)
         // Provide an additional rationale to the user. This would happen if the user denied the
         // request previously, but didn't check the "Don't ask again" checkbox.
         if (should) {
@@ -73,15 +73,19 @@ class PermissionHelper (private val activity: Activity,private val uiHelper: UiH
             }
             builder.setNegativeButton(R.string.re_try) { dialog, _ ->
                 dialog.dismiss()
-                ActivityCompat.requestPermissions(activity, arrayOf(ACCESS_FINE_LOCATION),PERMISSIONS_REQUEST_LOCATION)
+                ActivityCompat.requestPermissions(
+                    activity,
+                    arrayOf(ACCESS_FINE_LOCATION),
+                    PERMISSIONS_REQUEST_LOCATION
+                )
             }
             builder.show()
         }
     }
 
-    fun openSettingsDialog()
-    {
-        uiHelper.showPositiveDialogWithListener(activity,
+    fun openSettingsDialog() {
+        uiHelper.showPositiveDialogWithListener(
+            activity,
             activity.resources.getString(R.string.permission_required_dialog_title),
             activity.resources.getString(R.string.permission_denied_dialog_info),
             object : GpsEnableListener {
@@ -92,7 +96,8 @@ class PermissionHelper (private val activity: Activity,private val uiHelper: UiH
                     activity.startActivity(intent)
                 }
             },
-            activity.resources.getString(R.string.open_settings), false)
+            activity.resources.getString(R.string.open_settings), false
+        )
     }
 
     companion object {

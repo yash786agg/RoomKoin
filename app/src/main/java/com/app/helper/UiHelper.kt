@@ -29,15 +29,6 @@ class UiHelper(private val context : Context) {
     fun getTimeStamp() : Long {
         val date = Date()
         return date.time
-
-        /*
-        long time = date.getTime();
-        System.out.println("Time in Milliseconds: " + time);
-        Timestamp ts = new Timestamp(time);
-        System.out.println("Current Time Stamp: " + ts);
-        Time in Milli Seconds: 1447402821007
-        Current Time Stamp: 2015-11-13 13:50:21.007*/
-
     }
 
     fun convertTimeStampToDate(time : Long?) : String {

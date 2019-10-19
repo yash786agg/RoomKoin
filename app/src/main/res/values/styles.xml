@@ -75,6 +75,13 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="constrainLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingBottom">@dimen/dimen_20dp</item>
+        <item name="android:layout_margin">@dimen/dimen_20dp</item>
+    </style>
+
     <!-- Birds Adapter ImageView. -->
 
     <style name="birdsAdapterImageView">

@@ -11,7 +11,7 @@ fun EditText.onQueryTextChange(action: (String) -> Unit) {
         override fun onTextChanged(newText : CharSequence, start: Int, before: Int, count: Int) {}
 
         override fun afterTextChanged(editable : Editable) {
-            action.invoke(editable.toString())
+            if(editable.isNotEmpty()) action.invoke(editable.toString())
         }
     })
 }
