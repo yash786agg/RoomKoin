@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RoomKoin</string>
+
+    <string name="error_play_service_not_installed">Play-palveluita ei ole asennettu!</string>
+
+    <!-- Birds Activity-->
+
+    <string name="error_no_record">Ei näytettävää tietuetta</string>
+    <string name="name">Nimi</string>
+    <string name="note">Merkintä</string>
+    <string name="rarity">Harvinaisuus</string>
+    <string name="latitude">leveysaste</string>
+    <string name="longitude">pituusaste</string>
+    <string name="dateTime">Päivämäärä/Aika</string>
+
+    <!-- Add Birds Activity-->
+
+    <string name="title__add_bird">Lisää lintu</string>
+    <string name="hint_bird_name">Kirjoita linnun nimi</string>
+    <string name="hint_notes">Kirjoita muistiinpanot</string>
+    <string name="select_rarity">Valitse Rarity</string>
+    <string name="cancel">Peruuttaa</string>
+    <string name="save">Tallentaa</string>
+    <string name="error_bird_name">Linnun nimi ei voi olla tyhjä</string>
+    <string name="error_notes">Muistiinpanot eivät voi olla tyhjiä</string>
+    <string name="msg_data_added_successfully">Tiedot lisätty onnistuneesti</string>
+
+    <string-array name="rarity_bird_array">
+        <item>yhteinen</item>
+        <item>Harvinainen</item>
+        <item>Erittäin harvinainen</item>
+    </string-array>
+
+    <!-- Security Permission Strings. -->
+
+    <string name="permission_denied">Lupa kielletty</string>
+    <string name="i_am_sure">OLEN VARMA</string>
+    <string name="re_try">RE-TRY</string>
+    <string name="access_fine_loc">Ilman tätä lupaa et voi saada sijaintiasi. Haluatko varmasti kieltää tämän luvan?</string>
+    <string name="open_settings">Avaa asetukset</string>
+    <string name="permission_required_dialog_title">Lupa vaaditaan</string>
+    <string name="permission_denied_dialog_info">Hyväksymättä sijaintilupaa et voi jatkaa eteenpäin</string>
+
+    <string name="msg_save_geo_location">Haluatko tallentaa myös paikannuksen?</string>
+    <string name="msg_geo_location_content">Kyllä jatkaaksesi ja Ei tallentaaksesi ilman paikannusta</string>
+    <string name="msg_yes">Joo</string>
+    <string name="msg_no">Ei</string>
+
+    <string name="need_location">Ota GPS-palvelu käyttöön</string>
+    <string name="location_content">Sovellus tarvitsee sijaintisi saadaksesi sijaintisi.</string>
+    <string name="turn_on">Kiihottua</string>
+
+
+</resources>

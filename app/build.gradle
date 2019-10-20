@@ -19,8 +19,8 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
-            shrinkResources false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -53,7 +53,8 @@ dependencies {
     def assertions_version = "1.1.1"
     androidTestImplementation "androidx.test.ext:junit:$assertions_version"
 
-    androidTestImplementation 'androidx.test:rules:1.2.0'
+    def test_rules_version = "1.2.0"
+    androidTestImplementation "androidx.test:rules:$test_rules_version"
 
     // Espresso dependencies
     def espresso_version = "3.2.0"
@@ -83,13 +84,7 @@ dependencies {
     def room_version = '2.2.0'
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
-
-    // Co-routines support for Room
     implementation "androidx.room:room-ktx:$room_version"
-
-    // Paging dependency Injection
-    def pagingVersion = "1.0.1"
-    implementation "android.arch.paging:runtime:$pagingVersion"
 
     // Google Location Android dependencies
     def google_location_version = "17.0.0"
