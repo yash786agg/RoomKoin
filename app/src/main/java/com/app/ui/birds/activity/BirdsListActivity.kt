@@ -2,7 +2,6 @@ package com.app.ui.birds.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -42,14 +41,9 @@ class BirdsListActivity : AppCompatActivity() {
         birdsVM.getAllBirdsData().observe(this, Observer {
 
             it?.let {
-                Log.e("BirdsListActivity", "getAllBirdsData it: $it")
-                Log.e("BirdsListActivity", "getAllBirdsData Size: ${it.size}")
                 if (it.isNotEmpty()) {
-                    Log.e("BirdsListActivity", "getAllBirdsData birdName: ${it[0].birdName}")
-                    Log.e("BirdsListActivity", "getAllBirdsData timeStamp: ${uiHelper.convertTimeStampToDate(it[0].timeStamp)}")
-
-                    uiHelper.sortTimeStamp(it)
-                    birdsAdapter.items = it as ArrayList<BirdsEntity>
+                    uiHelper.sortTimeStamp(it as ArrayList<BirdsEntity>)
+                    birdsAdapter.items = it
                     recylv_birds.scrollToPosition(0)
                 } else recylv_birds.setEmptyView(tv_empty)
             }

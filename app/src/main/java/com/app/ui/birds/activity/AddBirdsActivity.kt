@@ -4,7 +4,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -108,13 +107,6 @@ class AddBirdsActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
         val notes : String = edt_notes.text.toString()
         val birdRarity : String = spinner_rarity.selectedItem.toString()
 
-        Log.e("BirdsListActivity","saveBirdData timeStamp: $timeStamp")
-        Log.e("BirdsListActivity","saveBirdData birdName: $birdName")
-        Log.e("BirdsListActivity","saveBirdData notes: $notes")
-        Log.e("BirdsListActivity","saveBirdData birdRarity: $birdRarity")
-        Log.e("BirdsListActivity","saveBirdData latitude: $latitude")
-        Log.e("BirdsListActivity","saveBirdData longitude: $longitude")
-
         val birdsEntity = BirdsEntity(timeStamp,birdName,notes,birdRarity,latitude,longitude)
         birdsVM.addBirdsData(birdsEntity)
 
@@ -122,7 +114,6 @@ class AddBirdsActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
         finish()
     }
     private fun accessGeoLocation() {
-
         uiHelper.accessLocationDialogWithListener(this,
             resources.getString(R.string.msg_save_geo_location),
             resources.getString(R.string.msg_geo_location_content),

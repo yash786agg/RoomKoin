@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rootView_list_birds"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    style="@style/MatchWidthHeight"
     tools:context="com.app.ui.birds.activity.BirdsListActivity">
 
     <com.app.extensions.EmptyRecyclerView
@@ -17,19 +17,10 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:text="@string/error_no_record"
-        android:textColor="@android:color/holo_red_light"
         android:textSize="@dimen/text_size_19sp"
+        android:textColor="@android:color/holo_red_light"
         android:textStyle="bold"
-        android:visibility="gone" />
-
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        style="@style/Widget.AppCompat.ProgressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:visibility="gone" />
+        android:visibility="gone"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add"
@@ -40,6 +31,6 @@
         android:src="@drawable/ic_vector_add"
         app:backgroundTint="@color/colorPrimary"
         app:fabSize="normal"
-        app:layout_anchorGravity="bottom|right|end" />
+        app:layout_anchorGravity="bottom|right|end"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

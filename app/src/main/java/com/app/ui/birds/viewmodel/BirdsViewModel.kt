@@ -4,22 +4,22 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.app.base.BaseViewModel
 import com.app.model.birds.BirdsEntity
-import com.app.repository.birds.BirdsUseCase
+import com.app.repository.birds.BirdsRepository
 import kotlinx.coroutines.launch
 
-class BirdsViewModel(private val birdsUseCase : BirdsUseCase) : BaseViewModel() {
+class BirdsViewModel(private val birdsRepository : BirdsRepository) : BaseViewModel() {
 
     // FOR DATA --
     private lateinit var data : MutableLiveData<List<BirdsEntity>>
 
     fun addBirdsData(birdsEntity : BirdsEntity)  {
-        ioScope.launch { birdsUseCase.executeInsertQuery(birdsEntity) }
+        ioScope.launch { birdsRepository.insertDataAsync(birdsEntity) }
     }
 
     fun getAllBirdsData() : LiveData<List<BirdsEntity>> {
         data = MutableLiveData()
 
-        ioScope.launch { data.postValue(birdsUseCase.executeGetListQuery()) }
+        ioScope.launch { data.postValue(birdsRepository.getListAsync()) }
 
         return data
     }
