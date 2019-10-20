@@ -94,7 +94,7 @@ kehitetty pitämällä mielessä, että tätä sovellusta voidaan laajentaa tuke
 * __[Espresso Testing](http://developer.android.com/training/testing/espresso)__
 
 Yllä olevien ominaisuuksien avulla koodista tehdään yksinkertainen, yleinen, ymmärrettävä, puhdas ja helposti
-ylläpidettävissätulevaa kehitystä varten. Erityisesti **Koin** riippuvuusinjektioon ja ** huoneen pysyvyyskirjasto **
+ylläpidettävissätulevaa kehitystä varten. Erityisesti **Koin** riippuvuusinjektioon ja **huoneen pysyvyyskirjasto**
 offline-tietojen tallennusta varten.
 
 Tämä sovellus tukee näytön kiertoa menettämättä tietoja ja käyttää myös **Constraintlayout**
