@@ -94,15 +94,15 @@ kehitetty pitämällä mielessä, että tätä sovellusta voidaan laajentaa tuke
 * __[Espresso Testing](http://developer.android.com/training/testing/espresso)__
 
 Yllä olevien ominaisuuksien avulla koodista tehdään yksinkertainen, yleinen, ymmärrettävä, puhdas ja helposti
-ylläpidettävissätulevaa kehitystä varten. Erityisesti ** Koin ** riippuvuusinjektioon ja ** huoneen pysyvyyskirjasto **
+ylläpidettävissätulevaa kehitystä varten. Erityisesti **Koin** riippuvuusinjektioon ja ** huoneen pysyvyyskirjasto **
 offline-tietojen tallennusta varten.
 
-Tämä sovellus tukee näytön kiertoa menettämättä tietoja ja käyttää myös ** Constraintlayout **
-suunnitella asettelua, joka antaa paremman ** käyttöliittymätuen sekä mobiililaitteille että
-tablet-laitteille ** ja jopa näytön kääntyessä.
+Tämä sovellus tukee näytön kiertoa menettämättä tietoja ja käyttää myös **Constraintlayout**
+suunnitella asettelua, joka antaa paremman **käyttöliittymätuen sekä mobiililaitteille että
+tablet-laitteille** ja jopa näytön kääntyessä.
 
-Koska tämä sovellus kehittyi tuotantoon valmis sovellus. Joten olin ottanut ** Proguardin ** käyttöön ** minifyEnabled ** kanssa
-ja ** shrinkResources ** Totta julkaistu versio yhdessä ** Android App Bundlen ** perustuen kanssa.
+Koska tämä sovellus kehittyi tuotantoon valmis sovellus. Joten olin ottanut **Proguardin** käyttöön **minifyEnabled** kanssa
+ja **shrinkResources** Totta julkaistu versio yhdessä **Android App Bundlen** perustuen kanssa.
 Tämän seurauksena voimme pienentää APK-kokoa, samalla kun pystymme tarjoamaan myös ylimääräisen turvallisuuden
 kerros koodillemme koodin purkamisesta tai purkamisesta koodista APK: sta. Katso lisätietoja alla olevasta kuvasta.
 
